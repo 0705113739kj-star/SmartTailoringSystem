@@ -179,7 +179,17 @@ class MemoryAppRouter implements AppRouter {
       }
     };
 
-    await runNext();
+    try {
+      await runNext();
+    } catch (err) {
+      if (!isSent) {
+        statusCode = 500;
+        outHeaders['content-type'] = 'application/json';
+        sentBody = {
+          error: err instanceof Error ? err.message : 'Internal local database error.',
+        };
+      }
+    }
     return {
       status: statusCode,
       headers: outHeaders,

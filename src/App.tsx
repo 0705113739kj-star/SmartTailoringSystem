@@ -24,7 +24,7 @@ import {
 import { AuthViews } from './components/AuthViews';
 import { BrandLogo } from './components/BrandLogo';
 import { useOnlineStatus } from './hooks/usePWA';
-import { ApiError, apiRequest, clearAuthTokens, setAuthTokens } from './lib/api';
+import { ApiError, apiRequest, clearAuthTokens, isMobileNative, setAuthTokens } from './lib/api';
 import { isEmbeddedIframe } from './lib/print';
 import { CustomersView } from './modules/CustomersView';
 import { DashboardView } from './modules/DashboardView';
@@ -174,6 +174,47 @@ export default function App() {
     setWorkspace(EMPTY_WORKSPACE);
     setBackupReminderDue(false);
   };
+
+  // Handle Android hardware Back button cleanly via @capacitor/app
+  useEffect(() => {
+    if (!isMobileNative()) return;
+    let cleanup: (() => void) | undefined;
+    let cancelled = false;
+
+    void (async () => {
+      try {
+        const { App: CapApp } = await import('@capacitor/app');
+        if (cancelled) return;
+        const handle = await CapApp.addListener('backButton', () => {
+          if (mobileNavOpen) {
+            setMobileNavOpen(false);
+            return;
+          }
+          if (user && activeModule !== 'dashboard') {
+            setActiveModule('dashboard');
+            setSelectedOrderId(null);
+            setSelectedPosOrderId(null);
+            return;
+          }
+          void CapApp.exitApp();
+        });
+        if (cancelled) {
+          void handle.remove();
+        } else {
+          cleanup = () => {
+            void handle.remove();
+          };
+        }
+      } catch {
+        // Ignore if plugin unavailable
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+      cleanup?.();
+    };
+  }, [mobileNavOpen, user, activeModule]);
 
   if (booting) {
     return (

@@ -18,4 +18,5 @@ backups/
 *.sqlite3
 public/wasm/
 server.js
+*.zip
 
