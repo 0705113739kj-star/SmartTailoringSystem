@@ -1,0 +1,6 @@
+{
+  "name": "SmartTailoringSystem",
+  "description": "Standalone offline-first Windows desktop POS for managing tailoring customers, measurements, orders, fabric estimation, inventory, manual M-Pesa & cash payments, backups, and business reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

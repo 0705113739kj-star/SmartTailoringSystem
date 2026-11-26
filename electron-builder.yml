@@ -1,0 +1,50 @@
+appId: com.smarttailoringsystem.pos
+productName: SmartTailoringSystem
+copyright: Copyright © 2026 SmartTailoringSystem
+
+directories:
+  output: release
+  buildResources: build
+
+files:
+  - dist/**/*
+  - dist-electron/**/*
+  - build/icon.ico
+  - build/icon.png
+  - package.json
+
+asar: true
+
+win:
+  target:
+    - target: appx
+      arch:
+        - x64
+    - target: nsis
+      arch:
+        - x64
+  icon: build/icon.ico
+  artifactName: SmartTailoringSystem-${version}-${arch}.${ext}
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: SmartTailoringSystem
+
+# Microsoft Store / MSIX (AppX) Packaging Configuration
+# IMPORTANT: Replace the placeholder Partner Center values below with the exact
+# Identity Name, Publisher CN, and PublisherDisplayName assigned in Microsoft Partner Center.
+appx:
+  applicationId: SmartTailoringSystem
+  displayName: SmartTailoringSystem
+  identityName: REPLACE-WITH-PARTNER-CENTER-IDENTITY-NAME
+  publisher: CN=REPLACE-WITH-PARTNER-CENTER-PUBLISHER-GUID
+  publisherDisplayName: REPLACE-WITH-YOUR-REGISTERED-PUBLISHER-NAME
+  backgroundColor: "#0F172A"
+  showNameOnTiles: true
+  languages:
+    - en-US
+  addAutoLaunchExtension: false

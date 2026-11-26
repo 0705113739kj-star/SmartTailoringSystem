@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SmartTailoringSystem</string>
+    <string name="title_activity_main">SmartTailoringSystem</string>
+    <string name="package_name">com.smarttailoringsystem.pos</string>
+    <string name="custom_url_scheme">com.smarttailoringsystem.pos</string>
+</resources>

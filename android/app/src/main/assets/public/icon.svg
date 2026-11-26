@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="96" fill="#0F172A"/>
+  <rect x="36" y="36" width="440" height="440" rx="72" stroke="#1E293B" stroke-width="4"/>
+  <!-- Tailoring Lapel / Geometric Shears Mark -->
+  <path d="M168 128L256 264L344 128" stroke="#0F766E" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M196 128L256 220L316 128" stroke="#F8FAFC" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M256 264V384" stroke="#F8FAFC" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="192" cy="348" r="32" stroke="#0F766E" stroke-width="20"/>
+  <circle cx="320" cy="348" r="32" stroke="#0F766E" stroke-width="20"/>
+  <path d="M216 326L256 264L296 326" stroke="#94A3B8" stroke-width="12" stroke-linecap="round"/>
+</svg>
